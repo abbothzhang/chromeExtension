@@ -1,0 +1,28 @@
+
+{
+  "name": "marketchFix",
+  "version": "0.9.0",
+  "manifest_version": 2,
+  "description": "修复marketch web显示插件左边title栏文案显示不全问题",
+  "browser_action": {
+    "default_icon": "icon_58.png" ,
+    "default_title": "marketchFix",
+    "default_popup": "popup.html"
+  },
+
+  "permissions": [
+    "tabs",
+    "http://*/",
+    "activeTab",
+    "notifications","storage","http://*/"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://designboard.alibaba-inc.com/*"],//改成你要加载的页面url,比如*://www.baidu.com/
+      "js": ["js/index.js"]
+    }
+  ]
+
+//  "background": { "scripts": ["js/background.js"] }
+}
