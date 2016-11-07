@@ -13,32 +13,23 @@ var filePath = "/file/code/web/chromeExtension/nodeEdit/test.text";
 
 
 var autoEdit = {
+
     writeAndPush:function(){
-        writeFile(filePath);
-        exec('cd /file/code/web/chromeExtension',function(err, stdout, stderr){
-            console.log(JSON.stringify('cmd->cd----'+err));
-            exec("git commit -am 'edit' ",function(err2, stdout, stderr){
-                console.log(JSON.stringify('cmd->git commit -am----'+err2));
-                exec("git push",function(err3, stdout, stderr){
-                    console.log(JSON.stringify('cmd->git push----'+err3));
+
+        setInterval(function () {
+            writeFile(filePath);
+            exec('cd /file/code/web/chromeExtension',function(err, stdout, stderr){
+                console.log(JSON.stringify('cmd->cd----'+err));
+                exec("git commit -am 'edit' ",function(err2, stdout, stderr){
+                    console.log(JSON.stringify('cmd->git commit -am----'+err2));
+                    exec("git push",function(err3, stdout, stderr){
+                        console.log(JSON.stringify('cmd->git push----'+err3));
+                    });
                 });
             });
-        });
 
-        // setInterval(function () {
-        //     writeFile(filePath);
-        //     exec('cd /file/code/web/chromeExtension',function(err, stdout, stderr){
-        //         console.log(JSON.stringify(err));
-        //         exec("git -am 'edit' ",function(err, stdout, stderr){
-        //             console.log(JSON.stringify(err));
-        //             exec("git push",function(err, stdout, stderr){
-        //                 console.log(JSON.stringify(err));
-        //             });
-        //         });
-        //     });
-        //
-        //
-        // },10*1000);
+
+        },3*1000);
 
 
 
