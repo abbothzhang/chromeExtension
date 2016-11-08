@@ -18,15 +18,17 @@ var autoEdit = {
 
         setInterval(function () {
             writeFile(filePath);
-            exec('cd /file/code/web/chromeExtension',function(err, stdout, stderr){
-                console.log(JSON.stringify('cmd->cd----'+err));
-                exec("git commit -am 'edit test.text' ",function(err2, stdout, stderr){
-                    console.log(JSON.stringify('cmd->git commit -am----'+err2));
-                    exec("git push",function(err3, stdout, stderr){
-                        console.log(JSON.stringify('cmd->git push----'+err3));
-                    });
+            exec("git commit -am 'edit test.text' ",function(err2, stdout, stderr){
+                console.log(JSON.stringify('cmd->git commit -am----'+err2));
+                exec("git push",function(err3, stdout, stderr){
+                    console.log(JSON.stringify('cmd->git push----'+err3));
                 });
             });
+
+            // exec('cd /file/code/web/chromeExtension',function(err, stdout, stderr){
+            //     console.log(JSON.stringify('cmd->cd----'+err));
+            //
+            // });
 
 
         },500);
